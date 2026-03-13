@@ -1,32 +1,28 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useLang } from '../context/LanguageContext'
 
-// Curated Unsplash photos — conference halls, AI/tech, and European city skylines.
-// Each entry uses a stable Unsplash photo ID so the image is always the same.
+// Word seeds for picsum.photos — same seed always returns the same image, no API key needed.
 const photos = [
-  // Conference & events
-  { id: 1,  unsplashId: 'bzdhc5b3Bxs', caption: 'Conference keynote stage' },
-  { id: 2,  unsplashId: 'gMsnXqILjp4', caption: 'Panel discussion' },
-  { id: 3,  unsplashId: 'RLw-UC03Gwc', caption: 'Audience at summit' },
-  { id: 4,  unsplashId: '0E_vhMVqL9g', caption: 'Networking session' },
-  // AI & technology
-  { id: 5,  unsplashId: 'vZJdYl5JVXY', caption: 'AI neural network' },
-  { id: 6,  unsplashId: 'iar-afB0QQw', caption: 'Technology workspace' },
-  { id: 7,  unsplashId: 'hpjSkU2UYSU', caption: 'Data visualization' },
-  { id: 8,  unsplashId: 'M5tzZtFCOfs', caption: 'Laptop and code' },
-  // European cities
-  { id: 9,  unsplashId: 'dJpqqFEBFtA', caption: 'Zurich skyline' },
-  { id: 10, unsplashId: 'Yen6kNKiAUk', caption: 'Swiss cityscape' },
-  { id: 11, unsplashId: 'Q1p7bh3SHj8', caption: 'Modern office building' },
-  { id: 12, unsplashId: 'eMP4sYPJ9x0', caption: 'City at night' },
+  { id: 1,  seed: 'conference-stage',    caption: 'Conference keynote stage' },
+  { id: 2,  seed: 'panel-discussion',    caption: 'Panel discussion' },
+  { id: 3,  seed: 'summit-audience',     caption: 'Audience at summit' },
+  { id: 4,  seed: 'business-networking', caption: 'Networking session' },
+  { id: 5,  seed: 'artificial-intelligence', caption: 'Artificial intelligence' },
+  { id: 6,  seed: 'technology-workspace',caption: 'Technology workspace' },
+  { id: 7,  seed: 'data-visualization',  caption: 'Data visualization' },
+  { id: 8,  seed: 'laptop-code',         caption: 'Developer at work' },
+  { id: 9,  seed: 'zurich-skyline',      caption: 'Zurich skyline' },
+  { id: 10, seed: 'swiss-city',          caption: 'Swiss cityscape' },
+  { id: 11, seed: 'modern-office',       caption: 'Modern office' },
+  { id: 12, seed: 'city-night',          caption: 'City at night' },
 ]
 
-function thumb(unsplashId) {
-  return `https://images.unsplash.com/photo-${unsplashId}?w=600&h=400&fit=crop&auto=format`
+function thumb(seed) {
+  return `https://picsum.photos/seed/${seed}/600/400`
 }
 
-function full(unsplashId) {
-  return `https://images.unsplash.com/photo-${unsplashId}?w=1200&h=800&fit=crop&auto=format`
+function full(seed) {
+  return `https://picsum.photos/seed/${seed}/1200/800`
 }
 
 function Lightbox({ photo, total, index, onClose, onPrev, onNext }) {
@@ -61,7 +57,7 @@ function Lightbox({ photo, total, index, onClose, onPrev, onNext }) {
       <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
         <img
           className="lightbox-img"
-          src={full(photo.unsplashId)}
+          src={full(photo.seed)}
           alt={photo.caption}
         />
         <div className="lightbox-counter">{photo.caption} &nbsp;·&nbsp; {index + 1} / {total}</div>
@@ -110,7 +106,7 @@ function Gallery() {
             >
               <img
                 className="gallery-thumb"
-                src={thumb(photo.unsplashId)}
+                src={thumb(photo.seed)}
                 alt={photo.caption}
                 loading="lazy"
               />
