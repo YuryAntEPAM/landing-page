@@ -1,28 +1,32 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useLang } from '../context/LanguageContext'
 
-// 12 curated picsum photos — each has a fixed seed so the image never changes
+// Curated Unsplash photos — conference halls, AI/tech, and European city skylines.
+// Each entry uses a stable Unsplash photo ID so the image is always the same.
 const photos = [
-  { id: 1,  seed: 10,  width: 800, height: 600 },
-  { id: 2,  seed: 20,  width: 800, height: 600 },
-  { id: 3,  seed: 30,  width: 800, height: 600 },
-  { id: 4,  seed: 40,  width: 800, height: 600 },
-  { id: 5,  seed: 50,  width: 800, height: 600 },
-  { id: 6,  seed: 60,  width: 800, height: 600 },
-  { id: 7,  seed: 70,  width: 800, height: 600 },
-  { id: 8,  seed: 80,  width: 800, height: 600 },
-  { id: 9,  seed: 90,  width: 800, height: 600 },
-  { id: 10, seed: 100, width: 800, height: 600 },
-  { id: 11, seed: 110, width: 800, height: 600 },
-  { id: 12, seed: 120, width: 800, height: 600 },
+  // Conference & events
+  { id: 1,  unsplashId: 'bzdhc5b3Bxs', caption: 'Conference keynote stage' },
+  { id: 2,  unsplashId: 'gMsnXqILjp4', caption: 'Panel discussion' },
+  { id: 3,  unsplashId: 'RLw-UC03Gwc', caption: 'Audience at summit' },
+  { id: 4,  unsplashId: '0E_vhMVqL9g', caption: 'Networking session' },
+  // AI & technology
+  { id: 5,  unsplashId: 'vZJdYl5JVXY', caption: 'AI neural network' },
+  { id: 6,  unsplashId: 'iar-afB0QQw', caption: 'Technology workspace' },
+  { id: 7,  unsplashId: 'hpjSkU2UYSU', caption: 'Data visualization' },
+  { id: 8,  unsplashId: 'M5tzZtFCOfs', caption: 'Laptop and code' },
+  // European cities
+  { id: 9,  unsplashId: 'dJpqqFEBFtA', caption: 'Zurich skyline' },
+  { id: 10, unsplashId: 'Yen6kNKiAUk', caption: 'Swiss cityscape' },
+  { id: 11, unsplashId: 'Q1p7bh3SHj8', caption: 'Modern office building' },
+  { id: 12, unsplashId: 'eMP4sYPJ9x0', caption: 'City at night' },
 ]
 
-function thumb(seed) {
-  return `https://picsum.photos/seed/${seed}/600/400`
+function thumb(unsplashId) {
+  return `https://images.unsplash.com/photo-${unsplashId}?w=600&h=400&fit=crop&auto=format`
 }
 
-function full(seed) {
-  return `https://picsum.photos/seed/${seed}/1200/800`
+function full(unsplashId) {
+  return `https://images.unsplash.com/photo-${unsplashId}?w=1200&h=800&fit=crop&auto=format`
 }
 
 function Lightbox({ photo, total, index, onClose, onPrev, onNext }) {
@@ -57,10 +61,10 @@ function Lightbox({ photo, total, index, onClose, onPrev, onNext }) {
       <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
         <img
           className="lightbox-img"
-          src={full(photo.seed)}
-          alt={`Event photo ${index + 1}`}
+          src={full(photo.unsplashId)}
+          alt={photo.caption}
         />
-        <div className="lightbox-counter">{index + 1} / {total}</div>
+        <div className="lightbox-counter">{photo.caption} &nbsp;·&nbsp; {index + 1} / {total}</div>
       </div>
 
       {/* Next button */}
@@ -106,8 +110,8 @@ function Gallery() {
             >
               <img
                 className="gallery-thumb"
-                src={thumb(photo.seed)}
-                alt={`${g.photoAlt} ${index + 1}`}
+                src={thumb(photo.unsplashId)}
+                alt={photo.caption}
                 loading="lazy"
               />
               <div className="gallery-item-overlay">
