@@ -11,19 +11,19 @@ function Hero() {
       <div className="hero-content">
         <div className="hero-badge">UPCOMING EVENT</div>
         <h1 className="hero-title">
-          <span className="hero-title-accent">TechForward</span> 2026
+          <span className="hero-title-accent">AI in Business Summit</span> Zurich 2026
         </h1>
         <p className="hero-subtitle">
-          The Premier Conference for Developers, Engineers &amp; Innovators
+          Where Business Leaders &amp; AI Practitioners Shape the Future of Enterprise
         </p>
         <div className="hero-meta">
           <div className="hero-meta-item">
             <span className="hero-meta-icon">&#128197;</span>
-            <span>April 25–26, 2026</span>
+            <span>March 15, 2026</span>
           </div>
           <div className="hero-meta-item">
             <span className="hero-meta-icon">&#128205;</span>
-            <span>Innovation Hub, San Francisco, CA</span>
+            <span>EPAM Office, Zurich</span>
           </div>
         </div>
         <button className="btn-primary" onClick={handleRegisterClick}>

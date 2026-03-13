@@ -16,7 +16,7 @@ function App() {
       <FAQ />
       <Registration />
       <footer className="footer">
-        <p>&copy; 2026 TechForward Conference. All rights reserved.</p>
+        <p>&copy; 2026 AI in Business Summit Zurich. All rights reserved.</p>
       </footer>
     </>
   )

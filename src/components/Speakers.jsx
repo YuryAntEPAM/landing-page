@@ -1,34 +1,34 @@
 const speakers = [
   {
-    name: 'Dr. Aisha Patel',
-    title: 'CTO',
-    company: 'NexaCloud',
-    bio: 'Aisha is a renowned cloud computing expert with 15 years of experience building large-scale distributed systems. She has led engineering teams at three unicorn startups and is a frequent keynote speaker at global tech conferences.',
-    initials: 'AP',
+    name: 'Dr. Anna Keller',
+    title: 'Head of AI Strategy',
+    company: 'Swiss Digital Innovation Group',
+    bio: 'Anna leads AI strategy and digital transformation initiatives across Switzerland\'s largest innovation network. She is a recognized thought leader in enterprise AI adoption and a frequent speaker at European business and technology forums.',
+    initials: 'AK',
     color: '#00f5d4',
   },
   {
-    name: 'Marcus Chen',
-    title: 'Staff Engineer',
-    company: 'DataStream',
-    bio: 'Marcus specializes in AI-assisted developer tooling and has contributed to several major open-source projects. He is the author of "Engineering at Scale," a widely read book on modern software architecture practices.',
-    initials: 'MC',
+    name: 'Michael Weber',
+    title: 'VP, Enterprise Transformation',
+    company: 'EPAM Switzerland',
+    bio: 'Michael has spent over a decade helping global enterprises navigate digital and AI-driven transformation. At EPAM Switzerland, he partners with executive teams to design and execute scalable AI programs that deliver measurable business outcomes.',
+    initials: 'MW',
     color: '#7b2ff7',
   },
   {
-    name: 'Sofia Reyes',
-    title: 'Principal Engineer',
-    company: 'QuantumLabs',
-    bio: "Sofia is a passionate advocate for developer experience and platform engineering. She built QuantumLabs' internal developer platform from scratch, reducing deployment times by 70% and enabling teams to ship 3x faster.",
-    initials: 'SR',
+    name: 'Sophie Laurent',
+    title: 'Director of Data & AI Governance',
+    company: 'Alpine Financial Services',
+    bio: 'Sophie is an expert in responsible AI frameworks, data governance, and regulatory compliance in the financial sector. She has led the design of AI governance structures across multiple European financial institutions and is an active contributor to EU AI Act implementation guidance.',
+    initials: 'SL',
     color: '#00f5d4',
   },
   {
-    name: 'James Okonkwo',
-    title: 'Head of Open Source',
-    company: 'GlobalTech Foundation',
-    bio: 'James leads open-source strategy and community building at the GlobalTech Foundation. He has been instrumental in launching several widely adopted developer tools and is a core maintainer of two top-100 GitHub repositories.',
-    initials: 'JO',
+    name: 'David Rosenberg',
+    title: 'Independent Advisor',
+    company: 'AI-Native Operating Models',
+    bio: 'David advises boards and C-suites on how to redesign operating models around AI capabilities. With experience across retail, logistics, and professional services, he helps organizations move from AI experimentation to enterprise-wide intelligence.',
+    initials: 'DR',
     color: '#7b2ff7',
   },
 ]
@@ -38,7 +38,7 @@ function Speakers() {
     <section className="speakers section-dark">
       <div className="container">
         <h2 className="section-title">Speakers</h2>
-        <p className="section-subtitle">Learn from the best minds in the industry</p>
+        <p className="section-subtitle">Hear from leading experts in enterprise AI</p>
         <div className="speakers-grid">
           {speakers.map((speaker, index) => (
             <div className="speaker-card" key={index}>

@@ -2,29 +2,29 @@ import { useState } from 'react'
 
 const faqs = [
   {
-    question: 'Where is TechForward 2026 held?',
+    question: 'Who should attend the summit?',
     answer:
-      'The event takes place at the Innovation Hub in San Francisco, CA — a state-of-the-art venue in the heart of the city, easily accessible by public transit, with parking available nearby.',
+      'The event is designed for business executives, digital transformation leaders, innovation managers, technology directors, and AI practitioners who want to understand how AI can create measurable business value.',
   },
   {
-    question: 'How do I register, and how much does it cost?',
+    question: 'Is the summit technical or business-focused?',
     answer:
-      'You can register using the form on this page. Early-bird tickets are available until March 31, 2026. Pricing starts at $299 for standard access and $499 for the full conference pass, which includes all workshops and the networking happy hour.',
+      'The summit is primarily business-focused, but it includes selected technical perspectives to help attendees understand what is realistically achievable with modern AI platforms.',
   },
   {
-    question: 'What is the refund policy?',
+    question: 'Will there be networking opportunities?',
     answer:
-      'Full refunds are available up to 30 days before the event. After that, you may transfer your ticket to another person. No refunds will be issued within 7 days of the event, but your ticket remains transferable.',
+      'Yes. The agenda includes networking during registration, coffee breaks, and after the final panel discussion, giving participants time to connect with speakers and peers.',
   },
   {
-    question: 'Will the sessions be recorded?',
+    question: 'Do I need prior AI experience to attend?',
     answer:
-      'Yes! All main-stage keynotes and talks will be recorded and made available to registered attendees within two weeks after the conference. Workshop recordings are available exclusively to full-pass holders.',
+      'No prior hands-on AI experience is required. The sessions are intended to be accessible to both experienced professionals and leaders who are just starting their AI journey.',
   },
   {
-    question: 'Is there a code of conduct?',
+    question: 'Where is the event taking place?',
     answer:
-      'Absolutely. TechForward is committed to providing a safe, welcoming, and inclusive environment for all attendees. Our full Code of Conduct is available on the event website. Violations can be reported to our on-site team at any time.',
+      'The summit will be held on March 15, 2026, at the EPAM Office in Zurich.',
   },
 ]
 
