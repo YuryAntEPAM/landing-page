@@ -5,6 +5,7 @@ const translations = {
       about: 'About',
       program: 'Program',
       speakers: 'Speakers',
+      gallery: 'Gallery',
       faq: 'FAQ',
       register: 'Register',
     },
@@ -178,6 +179,13 @@ const translations = {
       },
     },
 
+    // Gallery
+    gallery: {
+      title: 'Photo Gallery',
+      subtitle: 'Highlights from our past events',
+      photoAlt: 'Event photo',
+    },
+
     // Footer
     footer: '© 2026 AI in Business Summit Zurich. All rights reserved.',
   },
@@ -188,6 +196,7 @@ const translations = {
       about: 'Über uns',
       program: 'Programm',
       speakers: 'Referenten',
+      gallery: 'Galerie',
       faq: 'FAQ',
       register: 'Anmelden',
     },
@@ -352,6 +361,12 @@ const translations = {
         emailInvalid: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.',
         companyRequired: 'Unternehmensname ist erforderlich.',
       },
+    },
+
+    gallery: {
+      title: 'Fotogalerie',
+      subtitle: 'Highlights aus unseren vergangenen Veranstaltungen',
+      photoAlt: 'Veranstaltungsfoto',
     },
 
     footer: '© 2026 AI in Business Summit Zürich. Alle Rechte vorbehalten.',

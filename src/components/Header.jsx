@@ -19,6 +19,7 @@ function Header() {
           <button className="header-nav-link" onClick={() => scrollTo('about')}>{t.nav.about}</button>
           <button className="header-nav-link" onClick={() => scrollTo('program')}>{t.nav.program}</button>
           <button className="header-nav-link" onClick={() => scrollTo('speakers')}>{t.nav.speakers}</button>
+          <button className="header-nav-link" onClick={() => scrollTo('gallery')}>{t.nav.gallery}</button>
           <button className="header-nav-link" onClick={() => scrollTo('faq')}>{t.nav.faq}</button>
         </nav>
 
