@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useLang } from '../context/LanguageContext'
+import MapModal from './MapModal'
 
 const EVENT_DATE = new Date('2026-03-15T09:00:00')
 
@@ -21,6 +22,7 @@ function pad(n) {
 function Hero() {
   const { t } = useLang()
   const [timeLeft, setTimeLeft] = useState(getTimeLeft)
+  const [mapOpen, setMapOpen] = useState(false)
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -51,7 +53,13 @@ function Hero() {
           </div>
           <div className="hero-meta-item">
             <span className="hero-meta-icon">&#128205;</span>
-            <span>{t.hero.location}</span>
+            <button
+              className="hero-location-btn"
+              onClick={() => setMapOpen(true)}
+              aria-label={t.map.openMapLabel}
+            >
+              {t.hero.location}
+            </button>
           </div>
         </div>
 
@@ -87,6 +95,8 @@ function Hero() {
       </div>
       <div className="hero-glow hero-glow-left"></div>
       <div className="hero-glow hero-glow-right"></div>
+
+      {mapOpen && <MapModal onClose={() => setMapOpen(false)} />}
     </section>
   )
 }

@@ -179,6 +179,14 @@ const translations = {
       },
     },
 
+    // Map modal
+    map: {
+      title: 'EPAM Office, Zurich',
+      address: 'Richtistrasse 7, 8304 Wallisellen, Switzerland',
+      directionsLink: 'Open in Google Maps',
+      openMapLabel: 'View event location on map',
+    },
+
     // Gallery
     gallery: {
       title: 'Photo Gallery',
@@ -216,6 +224,14 @@ const translations = {
         minutes: 'Minuten',
         seconds: 'Sekunden',
       },
+    },
+
+    // Map modal
+    map: {
+      title: 'EPAM Büro, Zürich',
+      address: 'Richtistrasse 7, 8304 Wallisellen, Schweiz',
+      directionsLink: 'In Google Maps öffnen',
+      openMapLabel: 'Veranstaltungsort auf der Karte anzeigen',
     },
 
     about: {
