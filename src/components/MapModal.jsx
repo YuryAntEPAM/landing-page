@@ -1,9 +1,9 @@
 import { useEffect } from 'react'
 import { useLang } from '../context/LanguageContext'
 
-// EPAM Zurich office — Richtistrasse 7, 8304 Wallisellen (Zurich area)
+// EPAM Zurich office — Boulevard Lilienthal 2, 8152 Opfikon
 const MAP_EMBED_URL =
-  'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2700.3!2d8.5916!3d47.4103!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479aa0a8c6c6c6c7%3A0x1!2sEPAM%20Systems%20Zurich!5e0!3m2!1sen!2sch!4v1700000000000!5m2!1sen!2sch'
+  'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2699.4!2d8.5638!3d47.4268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479aa06a3a1b7b91%3A0x0!2sBoulevard%20Lilienthal%202%2C%208152%20Opfikon!5e0!3m2!1sen!2sch!4v1700000000000!5m2!1sen!2sch'
 
 function MapModal({ onClose }) {
   const { t } = useLang()
@@ -58,7 +58,7 @@ function MapModal({ onClose }) {
         <div className="map-modal-footer">
           <a
             className="map-directions-link"
-            href="https://maps.google.com/?q=EPAM+Systems+Zurich"
+            href="https://maps.google.com/?q=Boulevard+Lilienthal+2,+8152+Opfikon,+Switzerland"
             target="_blank"
             rel="noopener noreferrer"
           >
