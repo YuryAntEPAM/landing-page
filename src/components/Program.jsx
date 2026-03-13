@@ -1,41 +1,4 @@
-const schedule = [
-  {
-    time: '09:00 – 09:30',
-    title: 'Registration & Welcome Coffee',
-    speaker: 'EPAM Office, Zurich',
-    type: 'break',
-  },
-  {
-    time: '09:30 – 10:00',
-    title: 'Opening Keynote: The New Era of AI-Native Business',
-    speaker: 'Dr. Anna Keller, Head of AI Strategy, Swiss Digital Innovation Group',
-    type: 'keynote',
-  },
-  {
-    time: '10:00 – 10:45',
-    title: 'From Experiment to Scale: Building Enterprise AI That Delivers Value',
-    speaker: 'Michael Weber, VP Enterprise Transformation, EPAM Switzerland',
-    type: 'talk',
-  },
-  {
-    time: '11:00 – 11:45',
-    title: 'AI in Software Delivery: From Copilots to Autonomous Engineering Workflows',
-    speaker: 'Sophie Laurent, Director of Data & AI Governance, Alpine Financial Services',
-    type: 'talk',
-  },
-  {
-    time: '12:00 – 12:45',
-    title: 'Responsible AI in Practice: Governance, Security, and Compliance for 2026',
-    speaker: 'David Rosenberg, Independent Advisor on AI-Native Operating Models',
-    type: 'talk',
-  },
-  {
-    time: '13:00 – 13:30',
-    title: 'Panel Discussion: What Will Separate AI Leaders from AI Followers?',
-    speaker: 'All speakers — moderated panel',
-    type: 'panel',
-  },
-]
+import { useLang } from '../context/LanguageContext'
 
 const typeColors = {
   keynote: '#00f5d4',
@@ -46,13 +9,16 @@ const typeColors = {
 }
 
 function Program() {
+  const { t } = useLang()
+  const p = t.program
+
   return (
-    <section className="program section-mid">
+    <section className="program section-mid" id="program">
       <div className="container">
-        <h2 className="section-title">Program Schedule</h2>
-        <p className="section-subtitle">March 15, 2026 — EPAM Office, Zurich</p>
+        <h2 className="section-title">{p.title}</h2>
+        <p className="section-subtitle">{p.subtitle}</p>
         <div className="timeline">
-          {schedule.map((item, index) => (
+          {p.schedule.map((item, index) => (
             <div className="timeline-item" key={index}>
               <div className="timeline-time">{item.time}</div>
               <div className="timeline-connector">
@@ -60,7 +26,7 @@ function Program() {
                   className="timeline-dot"
                   style={{ backgroundColor: typeColors[item.type] || '#00f5d4' }}
                 ></div>
-                {index < schedule.length - 1 && <div className="timeline-line"></div>}
+                {index < p.schedule.length - 1 && <div className="timeline-line"></div>}
               </div>
               <div className="timeline-card">
                 <span
@@ -69,8 +35,8 @@ function Program() {
                 >
                   {item.type.toUpperCase()}
                 </span>
-                <h3 className="timeline-title" dangerouslySetInnerHTML={{ __html: item.title }} />
-                <p className="timeline-speaker" dangerouslySetInnerHTML={{ __html: item.speaker }} />
+                <h3 className="timeline-title">{item.title}</h3>
+                <p className="timeline-speaker">{item.speaker}</p>
               </div>
             </div>
           ))}

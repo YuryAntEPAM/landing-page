@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useLang } from '../context/LanguageContext'
 
 const EVENT_DATE = new Date('2026-03-15T09:00:00')
 
@@ -18,6 +19,7 @@ function pad(n) {
 }
 
 function Hero() {
+  const { t } = useLang()
   const [timeLeft, setTimeLeft] = useState(getTimeLeft)
 
   useEffect(() => {
@@ -35,54 +37,52 @@ function Hero() {
   }
 
   return (
-    <section className="hero">
+    <section className="hero" id="hero">
       <div className="hero-content">
-        <div className="hero-badge">UPCOMING EVENT</div>
+        <div className="hero-badge">{t.hero.badge}</div>
         <h1 className="hero-title">
-          <span className="hero-title-accent">AI in Business Summit</span> Zurich 2026
+          <span className="hero-title-accent">{t.hero.titleLine1}</span> {t.hero.titleLine2}
         </h1>
-        <p className="hero-subtitle">
-          Where Business Leaders &amp; AI Practitioners Shape the Future of Enterprise
-        </p>
+        <p className="hero-subtitle">{t.hero.subtitle}</p>
         <div className="hero-meta">
           <div className="hero-meta-item">
             <span className="hero-meta-icon">&#128197;</span>
-            <span>March 15, 2026</span>
+            <span>{t.hero.date}</span>
           </div>
           <div className="hero-meta-item">
             <span className="hero-meta-icon">&#128205;</span>
-            <span>EPAM Office, Zurich</span>
+            <span>{t.hero.location}</span>
           </div>
         </div>
 
         {timeLeft === null ? (
-          <div className="countdown-started">Event Started!</div>
+          <div className="countdown-started">{t.hero.countdownStarted}</div>
         ) : (
           <div className="countdown">
             <div className="countdown-unit">
               <span className="countdown-number">{pad(timeLeft.days)}</span>
-              <span className="countdown-label">Days</span>
+              <span className="countdown-label">{t.hero.countdownLabels.days}</span>
             </div>
             <div className="countdown-separator">:</div>
             <div className="countdown-unit">
               <span className="countdown-number">{pad(timeLeft.hours)}</span>
-              <span className="countdown-label">Hours</span>
+              <span className="countdown-label">{t.hero.countdownLabels.hours}</span>
             </div>
             <div className="countdown-separator">:</div>
             <div className="countdown-unit">
               <span className="countdown-number">{pad(timeLeft.minutes)}</span>
-              <span className="countdown-label">Minutes</span>
+              <span className="countdown-label">{t.hero.countdownLabels.minutes}</span>
             </div>
             <div className="countdown-separator">:</div>
             <div className="countdown-unit">
               <span className="countdown-number">{pad(timeLeft.seconds)}</span>
-              <span className="countdown-label">Seconds</span>
+              <span className="countdown-label">{t.hero.countdownLabels.seconds}</span>
             </div>
           </div>
         )}
 
         <button className="btn-primary" onClick={handleRegisterClick}>
-          Register Now
+          {t.hero.registerBtn}
         </button>
       </div>
       <div className="hero-glow hero-glow-left"></div>

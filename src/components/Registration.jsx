@@ -1,6 +1,10 @@
 import { useState } from 'react'
+import { useLang } from '../context/LanguageContext'
 
 function Registration() {
+  const { t } = useLang()
+  const r = t.registration
+
   const [form, setForm] = useState({ name: '', email: '', company: '' })
   const [errors, setErrors] = useState({})
   const [submitted, setSubmitted] = useState(false)
@@ -8,15 +12,15 @@ function Registration() {
   function validate() {
     const newErrors = {}
     if (!form.name.trim()) {
-      newErrors.name = 'Full name is required.'
+      newErrors.name = r.errors.nameRequired
     }
     if (!form.email.trim()) {
-      newErrors.email = 'Email address is required.'
+      newErrors.email = r.errors.emailRequired
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-      newErrors.email = 'Please enter a valid email address.'
+      newErrors.email = r.errors.emailInvalid
     }
     if (!form.company.trim()) {
-      newErrors.company = 'Company name is required.'
+      newErrors.company = r.errors.companyRequired
     }
     return newErrors
   }
@@ -42,30 +46,27 @@ function Registration() {
   return (
     <section className="registration section-dark" id="registration">
       <div className="container">
-        <h2 className="section-title">Register for the Event</h2>
-        <p className="section-subtitle">Secure your spot at TechForward 2026</p>
+        <h2 className="section-title">{r.title}</h2>
+        <p className="section-subtitle">{r.subtitle}</p>
 
         {submitted ? (
           <div className="success-message">
             <div className="success-icon">&#10003;</div>
-            <h3>You're registered!</h3>
-            <p>
-              Thank you, <strong>{form.name}</strong>! We've received your registration.
-              Keep an eye on <strong>{form.email}</strong> for your confirmation and event details.
-            </p>
+            <h3>{r.successTitle}</h3>
+            <p dangerouslySetInnerHTML={{ __html: r.successMsg(`<strong>${form.name}</strong>`, `<strong>${form.email}</strong>`) }} />
           </div>
         ) : (
           <form className="reg-form" onSubmit={handleSubmit} noValidate>
             <div className="form-group">
               <label htmlFor="name" className="form-label">
-                Full Name <span className="required">*</span>
+                {r.nameLabel} <span className="required">*</span>
               </label>
               <input
                 id="name"
                 name="name"
                 type="text"
                 className={`form-input ${errors.name ? 'form-input--error' : ''}`}
-                placeholder="Jane Smith"
+                placeholder={r.namePlaceholder}
                 value={form.name}
                 onChange={handleChange}
               />
@@ -74,14 +75,14 @@ function Registration() {
 
             <div className="form-group">
               <label htmlFor="email" className="form-label">
-                Email Address <span className="required">*</span>
+                {r.emailLabel} <span className="required">*</span>
               </label>
               <input
                 id="email"
                 name="email"
                 type="email"
                 className={`form-input ${errors.email ? 'form-input--error' : ''}`}
-                placeholder="jane@example.com"
+                placeholder={r.emailPlaceholder}
                 value={form.email}
                 onChange={handleChange}
               />
@@ -90,14 +91,14 @@ function Registration() {
 
             <div className="form-group">
               <label htmlFor="company" className="form-label">
-                Company <span className="required">*</span>
+                {r.companyLabel} <span className="required">*</span>
               </label>
               <input
                 id="company"
                 name="company"
                 type="text"
                 className={`form-input ${errors.company ? 'form-input--error' : ''}`}
-                placeholder="Acme Corp"
+                placeholder={r.companyPlaceholder}
                 value={form.company}
                 onChange={handleChange}
               />
@@ -105,7 +106,7 @@ function Registration() {
             </div>
 
             <button type="submit" className="btn-primary btn-submit">
-              Register Now
+              {r.submitBtn}
             </button>
           </form>
         )}

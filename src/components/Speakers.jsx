@@ -1,63 +1,6 @@
 import { useState } from 'react'
+import { useLang } from '../context/LanguageContext'
 import SpeakerModal from './SpeakerModal'
-
-const speakers = [
-  {
-    name: 'Dr. Anna Keller',
-    title: 'Head of AI Strategy',
-    company: 'Swiss Digital Innovation Group',
-    bio: 'Anna leads AI strategy and digital transformation initiatives across Switzerland\'s largest innovation network. She is a recognized thought leader in enterprise AI adoption and a frequent speaker at European business and technology forums. With a PhD in Computational Intelligence from ETH Zurich and over 12 years of applied research turned business practice, Anna bridges the gap between what AI can do and what organizations actually need.',
-    initials: 'AK',
-    color: '#00f5d4',
-    linkedin: 'https://linkedin.com',
-    twitter: 'https://x.com',
-    talks: [
-      { time: '09:30 – 10:00', title: 'Opening Keynote: The New Era of AI-Native Business' },
-    ],
-  },
-  {
-    name: 'Michael Weber',
-    title: 'VP, Enterprise Transformation',
-    company: 'EPAM Switzerland',
-    bio: 'Michael has spent over a decade helping global enterprises navigate digital and AI-driven transformation. At EPAM Switzerland, he partners with executive teams to design and execute scalable AI programs that deliver measurable business outcomes. His work spans industries including finance, manufacturing, and healthcare, and he is known for translating complex technology into clear strategic direction for senior leadership.',
-    initials: 'MW',
-    color: '#7b2ff7',
-    linkedin: 'https://linkedin.com',
-    twitter: 'https://x.com',
-    talks: [
-      { time: '10:00 – 10:45', title: 'From Experiment to Scale: Building Enterprise AI That Delivers Value' },
-      { time: '13:00 – 13:30', title: 'Panel Discussion: What Will Separate AI Leaders from AI Followers?' },
-    ],
-  },
-  {
-    name: 'Sophie Laurent',
-    title: 'Director of Data & AI Governance',
-    company: 'Alpine Financial Services',
-    bio: 'Sophie is an expert in responsible AI frameworks, data governance, and regulatory compliance in the financial sector. She has led the design of AI governance structures across multiple European financial institutions and is an active contributor to EU AI Act implementation guidance. Sophie is widely cited in policy circles and advises regulators on practical approaches to AI oversight.',
-    initials: 'SL',
-    color: '#00f5d4',
-    linkedin: 'https://linkedin.com',
-    twitter: null,
-    talks: [
-      { time: '11:00 – 11:45', title: 'AI in Software Delivery: From Copilots to Autonomous Engineering Workflows' },
-      { time: '13:00 – 13:30', title: 'Panel Discussion: What Will Separate AI Leaders from AI Followers?' },
-    ],
-  },
-  {
-    name: 'David Rosenberg',
-    title: 'Independent Advisor',
-    company: 'AI-Native Operating Models',
-    bio: 'David advises boards and C-suites on how to redesign operating models around AI capabilities. With experience across retail, logistics, and professional services, he helps organizations move from AI experimentation to enterprise-wide intelligence. David is the author of two widely read reports on AI operating model design and brings a distinctly practical, outcomes-first perspective to every engagement.',
-    initials: 'DR',
-    color: '#7b2ff7',
-    linkedin: 'https://linkedin.com',
-    twitter: 'https://x.com',
-    talks: [
-      { time: '12:00 – 12:45', title: 'Responsible AI in Practice: Governance, Security, and Compliance for 2026' },
-      { time: '13:00 – 13:30', title: 'Panel Discussion: What Will Separate AI Leaders from AI Followers?' },
-    ],
-  },
-]
 
 function LinkedInIcon() {
   return (
@@ -76,15 +19,17 @@ function XIcon() {
 }
 
 function Speakers() {
+  const { t } = useLang()
+  const s = t.speakers
   const [activeSpeaker, setActiveSpeaker] = useState(null)
 
   return (
-    <section className="speakers section-dark">
+    <section className="speakers section-dark" id="speakers">
       <div className="container">
-        <h2 className="section-title">Speakers</h2>
-        <p className="section-subtitle">Hear from leading experts in enterprise AI</p>
+        <h2 className="section-title">{s.title}</h2>
+        <p className="section-subtitle">{s.subtitle}</p>
         <div className="speakers-grid">
-          {speakers.map((speaker, index) => (
+          {s.list.map((speaker, index) => (
             <div
               className="speaker-card"
               key={index}
@@ -105,13 +50,11 @@ function Speakers() {
                 <span className="speaker-company">@ {speaker.company}</span>
               </p>
 
-              {/* Bio overlay shown on hover */}
               <div className="speaker-bio-overlay">
                 <p className="speaker-bio-overlay-text">{speaker.bio}</p>
-                <span className="speaker-bio-cta">Click to learn more</span>
+                <span className="speaker-bio-cta">{s.clickToLearnMore}</span>
               </div>
 
-              {/* Social icons */}
               <div className="speaker-social" onClick={(e) => e.stopPropagation()}>
                 {speaker.linkedin && (
                   <a

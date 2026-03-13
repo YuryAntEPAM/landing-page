@@ -1,4 +1,6 @@
 import './App.css'
+import { LanguageProvider, useLang } from './context/LanguageContext'
+import Header from './components/Header'
 import Hero from './components/Hero'
 import About from './components/About'
 import Program from './components/Program'
@@ -6,9 +8,11 @@ import Speakers from './components/Speakers'
 import FAQ from './components/FAQ'
 import Registration from './components/Registration'
 
-function App() {
+function PageContent() {
+  const { t } = useLang()
   return (
     <>
+      <Header />
       <Hero />
       <About />
       <Program />
@@ -16,9 +20,17 @@ function App() {
       <FAQ />
       <Registration />
       <footer className="footer">
-        <p>&copy; 2026 AI in Business Summit Zurich. All rights reserved.</p>
+        <p>{t.footer}</p>
       </footer>
     </>
+  )
+}
+
+function App() {
+  return (
+    <LanguageProvider>
+      <PageContent />
+    </LanguageProvider>
   )
 }
 
