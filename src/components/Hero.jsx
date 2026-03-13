@@ -1,4 +1,32 @@
+import { useState, useEffect } from 'react'
+
+const EVENT_DATE = new Date('2026-03-15T09:00:00')
+
+function getTimeLeft() {
+  const diff = EVENT_DATE - new Date()
+  if (diff <= 0) return null
+  return {
+    days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+    hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+    minutes: Math.floor((diff / (1000 * 60)) % 60),
+    seconds: Math.floor((diff / 1000) % 60),
+  }
+}
+
+function pad(n) {
+  return String(n).padStart(2, '0')
+}
+
 function Hero() {
+  const [timeLeft, setTimeLeft] = useState(getTimeLeft)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(getTimeLeft())
+    }, 1000)
+    return () => clearInterval(timer)
+  }, [])
+
   function handleRegisterClick() {
     const section = document.getElementById('registration')
     if (section) {
@@ -26,6 +54,33 @@ function Hero() {
             <span>EPAM Office, Zurich</span>
           </div>
         </div>
+
+        {timeLeft === null ? (
+          <div className="countdown-started">Event Started!</div>
+        ) : (
+          <div className="countdown">
+            <div className="countdown-unit">
+              <span className="countdown-number">{pad(timeLeft.days)}</span>
+              <span className="countdown-label">Days</span>
+            </div>
+            <div className="countdown-separator">:</div>
+            <div className="countdown-unit">
+              <span className="countdown-number">{pad(timeLeft.hours)}</span>
+              <span className="countdown-label">Hours</span>
+            </div>
+            <div className="countdown-separator">:</div>
+            <div className="countdown-unit">
+              <span className="countdown-number">{pad(timeLeft.minutes)}</span>
+              <span className="countdown-label">Minutes</span>
+            </div>
+            <div className="countdown-separator">:</div>
+            <div className="countdown-unit">
+              <span className="countdown-number">{pad(timeLeft.seconds)}</span>
+              <span className="countdown-label">Seconds</span>
+            </div>
+          </div>
+        )}
+
         <button className="btn-primary" onClick={handleRegisterClick}>
           Register Now
         </button>
